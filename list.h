@@ -3,7 +3,7 @@
 
 typedef struct node {
     int val;
-    struct node * next;
+    struct node *next;
 } node_t;
 
 typedef struct list {
@@ -12,22 +12,26 @@ typedef struct list {
 } list_t;
 
 list_t *list_create() {
-    list_t *new_list = (list_t*)malloc(sizeof(list_t));
+    list_t *new_list = (list_t *)malloc(sizeof(list_t));
     new_list->length = 0;
 
     return new_list;
 }
 
 void list_append(list_t *list, int val) {
-    if (list->length == 0) {
-        list->head = (node_t*)malloc(sizeof(node_t));
+    if (list->length == 0)
+    {
+        list->head = (node_t *)malloc(sizeof(node_t));
         list->head->val = val;
-    } else {
-        node_t *new_node = (node_t*)malloc(sizeof(node_t));
+    }
+    else
+    {
+        node_t *new_node = (node_t *)malloc(sizeof(node_t));
         new_node->val = val;
 
         node_t *curr = list->head;
-        while (curr->next) {
+        while (curr->next)
+        {
             curr = curr->next;
         }
 
@@ -40,7 +44,8 @@ void list_append(list_t *list, int val) {
 node_t *_list_at(list_t *list, int index) {
     node_t *curr = list->head;
 
-    for(int i=0;i<index;i++) {
+    for (int i = 0; i < index; i++)
+    {
         curr = curr->next;
     }
 
@@ -54,7 +59,8 @@ int list_at(list_t *list, int index) {
 void list_print(list_t *list) {
     node_t *curr = list->head;
 
-    while(curr->next){
+    while (curr->next)
+    {
         printf("%d\n", curr->val);
         curr = curr->next;
     }
@@ -62,7 +68,14 @@ void list_print(list_t *list) {
 }
 
 int list_remove_at(list_t *list, int index) {
-    node_t *bef_node = _list_at(list, index-1);
+    node_t *bef_node = _list_at(list, index - 1);
 
     bef_node->next = bef_node->next->next;
+}
+
+void list_cleanup(list_t *list) {
+    node_t arr[list->length];
+    for (int i = 0; i < list->length; i++)
+    {
+    }
 }

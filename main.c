@@ -4,10 +4,9 @@
 
 int main() {
     list_t *list = list_create();
-    list_append(list, 10);
-    list_append(list, 20);
-    list_append(list, 30);
-    list_append(list, 40);
+    for(int i=0;i<10;i++) {
+        list_append(list, i*1);
+    }
 
     printf("Printing list\n");
     list_print(list);
@@ -18,6 +17,9 @@ int main() {
     printf("Removing element at 2, list now looks like this:\n");
     list_remove_at(list, 2);
     list_print(list);
+
+    printf("Cleanup function frees memory");
+    list_cleanup(list);
 
     return 0;
 }
