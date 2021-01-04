@@ -7,7 +7,12 @@ int main() {
     list_append(list, 10);
     list_append(list, 20);
     list_append(list, 30);
+    list_append(list, 40);
 
+    printf("Printing list\n");
     list_print(list);
+
+    printf("Printing element at 2: ");
+    printf("%d\n", list_at(list, 2));
     return 0;
 }

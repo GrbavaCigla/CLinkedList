@@ -38,6 +38,16 @@ void list_append(list_t *list, int val) {
     list->length++;
 }
 
+int list_at(list_t *list, int index) {
+    node_t *curr = list->head;
+
+    for(int i=0;i<index;i++) {
+        curr = curr->next;
+    }
+
+    return curr->val;
+}
+
 void list_print(list_t *list) {
     node_t *curr = list->head;
 
