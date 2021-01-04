@@ -62,13 +62,29 @@ void list_print(list_t *list) {
 int list_remove_at(list_t *list, int index) {
     node_t *bef_node = _list_at(list, index - 1);
 
+    list->length--;
+    node_t *node_to_remove = bef_node->next;
+
     bef_node->next = bef_node->next->next;
+    free(node_to_remove);
 }
 
 void list_cleanup(list_t *list) {
-    node_t arr[list->length];
+    int length = list->length;
 
-    for (int i = 0; i < list->length; i++) {
-        arr[i] = list->he
+    node_t *arr[length];
+
+    node_t *curr = list->head;
+    int i = 0;
+    while (curr) {
+        arr[i] = curr;
+        i++;
+        curr = curr->next;
     }
+    arr[i] = curr;
+
+    for (int i = 0; i < length; i++) {
+        free(arr[i]);
+    }
+    free(list);
 }

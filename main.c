@@ -1,12 +1,16 @@
+#include "list.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "list.h"
 
 int main() {
     list_t *list = list_create();
-    for(int i=0;i<10;i++) {
-        list_append(list, i*1);
-    }
+    list_append(list, 0);
+    list_append(list, 1);
+    list_append(list, 2);
+    list_append(list, 3);
+    list_append(list, 4);
+    list_append(list, 5);
+    list_append(list, 6);
 
     printf("Printing list\n");
     list_print(list);
@@ -18,7 +22,7 @@ int main() {
     list_remove_at(list, 2);
     list_print(list);
 
-    printf("Cleanup function frees memory");
+    printf("Cleanup function frees memory\n");
     list_cleanup(list);
 
     return 0;

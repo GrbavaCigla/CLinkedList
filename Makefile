@@ -3,7 +3,7 @@ SOURCE	= main.c list.h
 HEADER	= 
 OUT	= clinklist
 CC	 = gcc
-FLAGS	 = -O3 -c -Wall
+FLAGS	 = -g -c -Wall
 LFLAGS	 = 
 
 all: $(OBJS)
