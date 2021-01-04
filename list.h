@@ -69,6 +69,20 @@ int list_remove_at(list_t *list, int index) {
     free(node_to_remove);
 }
 
+int list_find(list_t *list, int val) {
+    node_t *curr = list->head;
+
+    int i = 0;
+    while(curr) {
+        printf("TEST: %d\n", curr->val);
+        if (curr->val == val) {
+            return i;
+        }
+        curr = curr->next;
+        i++;
+    }
+}
+
 void list_cleanup(list_t *list) {
     int length = list->length;
 
