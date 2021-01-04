@@ -1,5 +1,5 @@
 OBJS	= main.o
-SOURCE	= main.c
+SOURCE	= main.c list.h
 HEADER	= 
 OUT	= clinklist
 CC	 = gcc
@@ -9,7 +9,7 @@ LFLAGS	 =
 all: $(OBJS)
 	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
 
-main.o: main.c
+main.o: $(SOURCE)
 	$(CC) $(FLAGS) main.c 
 
 clean:
