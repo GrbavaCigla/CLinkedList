@@ -14,5 +14,10 @@ int main() {
 
     printf("Printing element at 2: ");
     printf("%d\n", list_at(list, 2));
+
+    printf("Removing element at 2, list now looks like this:\n");
+    list_remove_at(list, 2);
+    list_print(list);
+
     return 0;
 }

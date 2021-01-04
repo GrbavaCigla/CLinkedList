@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <malloc.h>
 
 typedef struct node {
@@ -38,14 +37,18 @@ void list_append(list_t *list, int val) {
     list->length++;
 }
 
-int list_at(list_t *list, int index) {
+node_t *_list_at(list_t *list, int index) {
     node_t *curr = list->head;
 
     for(int i=0;i<index;i++) {
         curr = curr->next;
     }
 
-    return curr->val;
+    return curr;
+}
+
+int list_at(list_t *list, int index) {
+    return _list_at(list, index)->val;
 }
 
 void list_print(list_t *list) {
@@ -56,4 +59,10 @@ void list_print(list_t *list) {
         curr = curr->next;
     }
     printf("%d\n", curr->val);
+}
+
+int list_remove_at(list_t *list, int index) {
+    node_t *bef_node = _list_at(list, index-1);
+
+    bef_node->next = bef_node->next->next;
 }
