@@ -39,6 +39,8 @@ int main() {
     list_replace_at(list, 4, 9382);
     list_print(list);
 
+    printf("Linked list converted to array, location at 4: %d\n", *(list_to_arr(list) + 4));
+
     printf("Cleanup function frees memory\n");
     list_cleanup(list);
 
