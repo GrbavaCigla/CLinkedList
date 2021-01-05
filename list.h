@@ -7,8 +7,9 @@ typedef struct node {
 } node_t;
 
 typedef struct list {
-    unsigned short int length;
+    unsigned int length;
     node_t *head;
+    node_t *tail;
 } list_t;
 
 list_t *list_create() {
@@ -22,16 +23,14 @@ void list_append(list_t *list, int val) {
     if (list->length == 0) {
         list->head = (node_t *)malloc(sizeof(node_t));
         list->head->val = val;
+
+        list->tail = list->head;
     } else {
         node_t *new_node = (node_t *)malloc(sizeof(node_t));
         new_node->val = val;
 
-        node_t *curr = list->head;
-        while (curr->next) {
-            curr = curr->next;
-        }
-
-        curr->next = new_node;
+        list->tail->next = new_node;
+        list->tail = new_node;
     }
 
     list->length++;
@@ -67,6 +66,14 @@ int list_remove_at(list_t *list, int index) {
 
     bef_node->next = bef_node->next->next;
     free(node_to_remove);
+
+    if (index == list->length) {
+        list->tail = bef_node;   
+    }
+}
+
+int list_pop(list_t *list) {
+    return list_remove_at(list, list->length - 1);
 }
 
 int list_find(list_t *list, int val) {

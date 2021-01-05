@@ -25,6 +25,12 @@ int main() {
     printf("Finding value 15: ");
     printf("%d\n", list_find(list, 15));
 
+    printf("Poping twice and appending 1500:\n");
+    list_pop(list);
+    list_pop(list);
+    list_append(list, 1500);
+    list_print(list);
+
     printf("Cleanup function frees memory\n");
     list_cleanup(list);
 
