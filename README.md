@@ -1,4 +1,4 @@
-# CLinkedList
+# CLinkedList ![C/C++ CI](https://github.com/GrbavaCigla/CLinkedList/workflows/C/C++%20CI/badge.svg)
 C practice - making linked list from scratch
 
 ## Installation
