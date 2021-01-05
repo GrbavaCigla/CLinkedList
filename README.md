@@ -23,3 +23,5 @@ list_find
 list_to_arr
 list_cleanup
 ```
+## TODO
+- Insert function breaks if index is length-1
