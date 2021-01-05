@@ -79,8 +79,18 @@ int list_pop(list_t *list) {
     return list_remove_at(list, list->length - 1);
 }
 
-void list_replace_at(list *list, int index, int val) {
+void list_replace_at(list_t *list, int index, int val) {
     _list_at(list, index)->val = val;
+}
+
+void list_insert(list_t *list, int index, int val) {
+    node_t *bef_node = _list_at(list, index - 1);
+
+    node_t *new_node = (node_t*)malloc(sizeof(node_t));
+    new_node->val = val;
+    new_node->next = bef_node->next;
+
+    bef_node->next = new_node;
 }
 
 int list_find(list_t *list, int val) {

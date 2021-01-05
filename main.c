@@ -31,6 +31,14 @@ int main() {
     list_append(list, 1500);
     list_print(list);
 
+    printf("Inserting at location 4:\n");
+    list_insert(list, 4, 8293);
+    list_print(list);
+
+    printf("Replace at location 4:\n");
+    list_replace_at(list, 4, 9382);
+    list_print(list);
+
     printf("Cleanup function frees memory\n");
     list_cleanup(list);
 
