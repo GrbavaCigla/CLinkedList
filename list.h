@@ -1,9 +1,9 @@
 /*
-Author: Aleksa Ognjanovic (GrbavaCigla)
-License: GPLv3
-Date: 4-1-2021
-Description: fast linked lists for C
-*/
+ *Author: Aleksa Ognjanovic (GrbavaCigla)
+ *License: GPLv3
+ *Date: 4-1-2021
+ *Description: fast linked lists for C
+ */
 
 #include <malloc.h>
 #include <stdio.h>
@@ -98,6 +98,8 @@ void list_insert(list_t *list, int index, int val) {
     new_node->next = bef_node->next;
 
     bef_node->next = new_node;
+
+    list->length++;
 }
 
 int list_find(list_t *list, int val) {
