@@ -74,13 +74,14 @@ int list_find(list_t *list, int val) {
 
     int i = 0;
     while(curr) {
-        printf("TEST: %d\n", curr->val);
         if (curr->val == val) {
             return i;
         }
         curr = curr->next;
         i++;
     }
+
+    return -1;
 }
 
 void list_cleanup(list_t *list) {
