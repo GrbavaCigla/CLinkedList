@@ -87,6 +87,28 @@ void list_replace_at(list_t *list, int index, int val) {
     _list_at(list, index)->val = val;
 }
 
+int list_max(list_t* list) {
+    int cur_max = list->head->val;
+
+    node_t *curr = list->head;
+    while(curr) {
+        cur_max = curr->val > cur_max ? curr->val : cur_max;
+    }
+
+    return cur_max;
+}
+
+int list_min(list_t* list) {
+    int cur_min = list->head->val;
+
+    node_t *curr = list->head;
+    while(curr) {
+        cur_min = curr->val < cur_min ? curr->val : cur_min;
+    }
+
+    return cur_min;
+}
+
 void list_insert(list_t *list, int index, int val) {
     node_t *bef_node = _list_at(list, index - 1);
 
