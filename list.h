@@ -79,6 +79,10 @@ int list_pop(list_t *list) {
     return list_remove_at(list, list->length - 1);
 }
 
+void list_replace_at(list *list, int index, int val) {
+    _list_at(list, index)->val = val;
+}
+
 int list_find(list_t *list, int val) {
     node_t *curr = list->head;
 
