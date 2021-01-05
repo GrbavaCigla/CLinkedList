@@ -58,11 +58,10 @@ int list_at(list_t *list, int index) { return _list_at(list, index)->val; }
 void list_print(list_t *list) {
     node_t *curr = list->head;
 
-    while (curr->next) {
+    while (curr) {
         printf("%d\n", curr->val);
         curr = curr->next;
     }
-    printf("%d\n", curr->val);
 }
 
 int list_remove_at(list_t *list, int index) {
@@ -76,15 +75,13 @@ int list_remove_at(list_t *list, int index) {
     free(node_to_remove);
 
     if (index == list->length) {
-        list->tail = bef_node;   
+        list->tail = bef_node;
     }
 
     return val_to_return;
 }
 
-int list_pop(list_t *list) {
-    return list_remove_at(list, list->length - 1);
-}
+int list_pop(list_t *list) { return list_remove_at(list, list->length - 1); }
 
 void list_replace_at(list_t *list, int index, int val) {
     _list_at(list, index)->val = val;
@@ -93,7 +90,7 @@ void list_replace_at(list_t *list, int index, int val) {
 void list_insert(list_t *list, int index, int val) {
     node_t *bef_node = _list_at(list, index - 1);
 
-    node_t *new_node = (node_t*)malloc(sizeof(node_t));
+    node_t *new_node = (node_t *)malloc(sizeof(node_t));
     new_node->val = val;
     new_node->next = bef_node->next;
 
@@ -106,7 +103,7 @@ int list_find(list_t *list, int val) {
     node_t *curr = list->head;
 
     int i = 0;
-    while(curr) {
+    while (curr) {
         if (curr->val == val) {
             return i;
         }
@@ -117,19 +114,27 @@ int list_find(list_t *list, int val) {
     return -1;
 }
 
+int *list_to_arr(list_t *list) {
+    int arr[list->length];
+
+    node_t *curr = list->head;
+    for (int i = 0; i < list->length; i++) {
+        arr[i] = curr->val;
+        curr = curr->next;
+    }
+
+    return arr;
+}
+
 void list_cleanup(list_t *list) {
     int length = list->length;
-
     node_t *arr[length];
 
     node_t *curr = list->head;
-    int i = 0;
-    while (curr) {
+    for (int i = 0; i < list->length; i++) {
         arr[i] = curr;
-        i++;
         curr = curr->next;
     }
-    arr[i] = curr;
 
     for (int i = 0; i < length; i++) {
         free(arr[i]);
