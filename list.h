@@ -115,7 +115,7 @@ int list_find(list_t *list, int val) {
 }
 
 int *list_to_arr(list_t *list) {
-    int *arr = malloc(sizeof(int)*list->length);
+    int *arr = (int *)malloc(sizeof(int)*list->length);
 
     node_t *curr = list->head;
     for (int i = 0; i < list->length; i++) {
