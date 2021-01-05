@@ -1,3 +1,10 @@
+/*
+Author: Aleksa Ognjanovic (GrbavaCigla)
+License: GPLv3
+Date: 4-1-2021
+Description: fast linked lists for C
+*/
+
 #include <malloc.h>
 #include <stdio.h>
 
