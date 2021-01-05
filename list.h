@@ -60,6 +60,7 @@ void list_print(list_t *list) {
 
 int list_remove_at(list_t *list, int index) {
     node_t *bef_node = _list_at(list, index - 1);
+    int val_to_return = bef_node->next->val;
 
     list->length--;
     node_t *node_to_remove = bef_node->next;
@@ -70,6 +71,8 @@ int list_remove_at(list_t *list, int index) {
     if (index == list->length) {
         list->tail = bef_node;   
     }
+
+    return val_to_return;
 }
 
 int list_pop(list_t *list) {
