@@ -110,6 +110,10 @@ int list_min(list_t* list) {
 }
 
 void list_insert(list_t *list, int index, int val) {
+    if (index == list->length - 1) {
+        return list_append(list, val);
+    }
+
     node_t *bef_node = _list_at(list, index - 1);
 
     node_t *new_node = (node_t *)malloc(sizeof(node_t));
