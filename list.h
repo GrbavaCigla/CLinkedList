@@ -6,10 +6,13 @@
  */
 
 #include <malloc.h>
-#include <stdio.h>
+
+#ifndef listype
+#define listype int
+#endif
 
 typedef struct node {
-    int val;
+    listype val;
     struct node *next;
 } node_t;
 
@@ -26,7 +29,7 @@ list_t *list_create() {
     return new_list;
 }
 
-void list_append(list_t *list, int val) {
+void list_append(list_t *list, listype val) {
     if (list->length == 0) {
         list->head = (node_t *)malloc(sizeof(node_t));
         list->head->val = val;
@@ -53,20 +56,20 @@ node_t *_list_at(list_t *list, int index) {
     return curr;
 }
 
-int list_at(list_t *list, int index) { return _list_at(list, index)->val; }
+listype list_at(list_t *list, int index) { return _list_at(list, index)->val; }
 
-void list_print(list_t *list) {
+void list_print(list_t *list, void (*print_func)(listype)) {
     node_t *curr = list->head;
 
     while (curr) {
-        printf("%d\n", curr->val);
+        (*print_func)(curr->val);
         curr = curr->next;
     }
 }
 
-int list_remove_at(list_t *list, int index) {
+listype list_remove_at(list_t *list, int index) {
     node_t *bef_node = _list_at(list, index - 1);
-    int val_to_return = bef_node->next->val;
+    listype val_to_return = bef_node->next->val;
 
     list->length--;
     node_t *node_to_remove = bef_node->next;
@@ -87,8 +90,8 @@ void list_replace_at(list_t *list, int index, int val) {
     _list_at(list, index)->val = val;
 }
 
-int list_max(list_t* list) {
-    int cur_max = list->head->val;
+listype list_max(list_t* list) {
+    listype cur_max = list->head->val;
 
     node_t *curr = list->head;
     while(curr) {
@@ -98,8 +101,8 @@ int list_max(list_t* list) {
     return cur_max;
 }
 
-int list_min(list_t* list) {
-    int cur_min = list->head->val;
+listype list_min(list_t* list) {
+    listype cur_min = list->head->val;
 
     node_t *curr = list->head;
     while(curr) {
@@ -109,7 +112,7 @@ int list_min(list_t* list) {
     return cur_min;
 }
 
-void list_insert(list_t *list, int index, int val) {
+void list_insert(list_t *list, int index, listype val) {
     if (index == list->length) {
         return list_append(list, val);
     }
@@ -140,8 +143,8 @@ int list_find(list_t *list, int val) {
     return -1;
 }
 
-int *list_to_arr(list_t *list) {
-    int *arr = (int *)malloc(sizeof(int)*list->length);
+listype *list_to_arr(list_t *list) {
+    listype *arr = (listype *)malloc(sizeof(listype)*list->length);
 
     node_t *curr = list->head;
     for (int i = 0; i < list->length; i++) {
