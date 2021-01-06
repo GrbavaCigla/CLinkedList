@@ -110,7 +110,7 @@ int list_min(list_t* list) {
 }
 
 void list_insert(list_t *list, int index, int val) {
-    if (index == list->length - 1) {
+    if (index == list->length) {
         return list_append(list, val);
     }
 
